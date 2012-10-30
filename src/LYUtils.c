@@ -5835,7 +5835,7 @@ static FILE *OpenHiddenFile(const char *name, const char *mode)
 	if (fd < 0
 	    && errno == EEXIST
 	    && IsOurFile(name)) {
-	    remove(name);
+	    remove((char*)name);
 	    /* FIXME: there's a race at this point if directory is open */
 	    fd = open(name, O_CREAT | O_EXCL | O_WRONLY, HIDE_CHMOD);
 	}
